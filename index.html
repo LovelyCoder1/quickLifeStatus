@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Calci</title>
+</head>
+<style>
+    body{
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    h1{
+        margin-top: 80px;
+        font-weight: bold;
+    }
+    .container{
+        background: linear-gradient(45deg, rgb(229, 130, 238), pink);
+        padding: 4px;
+        width: 94%;
+        border: 4px solid transparent;
+        border-radius: 18px;
+        box-shadow: 3px 4px 4px blueviolet;
+    }
+    .container input{
+        margin: 15px auto;
+    }
+    .range{
+        margin: 10px auto;
+    }
+    h2{
+        display: inline;
+    }
+    input{
+        transition: all 0.4s ease;
+    }
+
+
+    /********** Range Input Styles **********/
+    /*Range Reset*/
+    input[type="range"] {
+    -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 15rem;
+    }
+
+    /* Removes default focus */
+    input[type="range"]:focus {
+    outline: none;
+    }
+
+    /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+    /* slider track */
+    input[type="range"]::-webkit-slider-runnable-track {
+    background:linear-gradient(to right, violet, blueviolet, rgb(104, 30, 172));
+    border-radius: 0.5rem;
+    height: 0.5rem;  
+    }
+
+    /* slider thumb */
+    input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -12px; /* Centers thumb on the track */
+
+    /*custom styles*/
+    background-color: #e25ceb;
+    height: 2rem;
+    width: 1rem;
+    border-radius: 10px;
+    }
+
+    input[type="range"]:focus::-webkit-slider-thumb {   
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem; 
+    }
+
+    /******** Firefox styles ********/
+    /* slider track */
+    input[type="range"]::-moz-range-track {
+    background-color: #053a5f;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+
+    /*custom styles*/
+    background-color: #5cd5eb;
+    height: 2rem;
+    width: 1rem;
+    }
+
+    input[type="range"]:focus::-moz-range-thumb {
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem; 
+    }
+
+
+
+    /* Media queries here */
+    @media(max-width:450px){
+        input{
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        .container h2{
+            padding-top: 0px;
+            margin-top: 0px;
+            display: block;
+            font-size: 18px;
+        }
+    }
+
+    .git{
+        width:32px;
+        height: 32px;
+        position: absolute;
+        right: 18px;
+        cursor: pointer;
+    }
+
+
+</style>
+<body>
+    <a target="_blank" href="https://github.com/LovelyCoder1"><img src="./github.png" class="git" alt="github"></a>
+    <h1 id="heading">Quik Life Status</h1>
+    <div class="container">
+        <div class="range">
+            <input type="range" onchange="handleFreinds()" name="input1"  id="input1" value="0" min="0" max="100">
+            <h2>Freinds🧑🏽‍🤝‍🧑🏽</h2>
+        </div>
+        <div class="range">
+            <input type="range" onchange="handleLove()" name="input2" id="input2"  value="0" min="0" max="100">
+            <h2>Love ❤️❤️</h2>
+        </div>
+        <div class="range">
+            <input type="range"  onchange="handleMoney()" name="input3" id="input3" value="0" min="0" max="100">
+            <h2>Money .💸</h2>
+        </div>
+        <div class="range">
+            <input type="range" onchange="handleHealth()" name="input4" id="input4" value="0" min="0" max="100">
+            <h2>Health. 🧘‍♂️</h2>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // let freinds = document.getElementById("input1");
+    // let love = document.getElementById("input2");
+    // let money = document.getElementById("input3");
+    // let health = document.getElementById("input4");
+    let freinds = input1.value;
+    let love = input2.value;
+    let money = input3.value;
+    let health = input4.value;
+
+    const handleFreinds = ()=>{
+        console.log("freind - ", input1.value);
+
+        input2.value = 100 - input1.value*(9 / 8);
+        input3.value = 100 - input1.value * (0.4);
+        input4.value = input1.value-5;
+    }
+    const handleLove = ()=>{
+        console.log("love - ", input2.value);
+
+        input1.value = 100 - input2.value*(9/10);
+        input3.value = 100 - input2.value*(9/7);
+        input4.value = 100 - input2.value*(2/5);
+    }
+    const handleMoney = ()=>{
+        console.log("money - ", input3.value);
+
+        input1.value = 100 - input3.value*(3/5);
+        input2.value = input3.value-10;
+        input4.value = 100 - input3.value*(3/7);
+
+    }
+    const handleHealth = ()=>{
+        console.log("health - ", input4.value);
+
+        input1.value = input4.value - 10;
+        input2.value = input4.value - 15;
+        input3.value = input4.value -5;
+    }
+
+   
+
+</script>
+</html>
